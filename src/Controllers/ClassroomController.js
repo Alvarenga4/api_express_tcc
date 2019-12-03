@@ -27,13 +27,13 @@ module.exports = {
     if (user) {
       if (user.is_teacher == true || user.is_adm == true || user.is_coordinator == true) {
         const data = await Classroom.create({
-          subject_id,
-          course_id,
-          user_id,
+          subject: subject_id,
+          course: course_id,
+          user: user_id,
           description,
         });
 
-        await data.populate('user_id').populate('subject_id').populate('course_id').execPopulate();
+        await data.populate('user').populate('subject').populate('course').execPopulate();
 
         return res.json(data);
       } else {

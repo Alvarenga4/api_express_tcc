@@ -1,10 +1,19 @@
 const mongoose = require('mongoose');
 
 const ClassroomSchema = new mongoose.Schema({
-  course_id: String,
-  subject_id: String,
+  course: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Course'
+  },
+  subject: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Subject'
+  },
   description: String,
-  user_id: String,
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
 });
 
 module.exports = mongoose.model('Classroom', ClassroomSchema);
