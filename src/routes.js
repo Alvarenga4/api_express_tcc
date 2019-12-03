@@ -9,6 +9,7 @@ const SubjectController = require('./Controllers/SubjectController');
 const CourseController = require('./Controllers/CourseController');
 const ClassroomController = require('./Controllers/ClassroomController');
 const JoinClassroomController = require('./Controllers/JoinClassroomController');
+const WorksClassroomController = require('./Controllers/WorksClassroomController');
 
 const routes = express.Router();
 const upload = multer(uploadConfig);
@@ -46,5 +47,10 @@ routes.get('/joinclassroom', JoinClassroomController.index);
 routes.get('/joinclassroom/:_id', JoinClassroomController.show);
 routes.post('/joinclassroom/:classroom_id', JoinClassroomController.store);
 routes.delete('/joinclassroom/:_id', JoinClassroomController.delete);
+
+routes.get('/upfile', WorksClassroomController.index);
+routes.get('/upfile/:_id', WorksClassroomController.show);
+routes.post('/upfile/:classroom_id', upload.single('document'), WorksClassroomController.store);
+routes.delete('/upfile/:_id', WorksClassroomController.delete);
 
 module.exports = routes;
