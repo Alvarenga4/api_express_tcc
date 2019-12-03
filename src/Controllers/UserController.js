@@ -78,7 +78,6 @@ module.exports = {
       formation,
       school_graduation,
       year_graduation,
-      password,
     } = req.body;
 
     const data = await User.findByIdAndUpdate(_id, {
@@ -98,7 +97,6 @@ module.exports = {
       formation,
       school_graduation,
       year_graduation,
-      password,
     });
 
     return res.json(data);
