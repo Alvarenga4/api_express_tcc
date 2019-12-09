@@ -15,6 +15,15 @@ module.exports = {
     return res.json(data);
   },
 
+  async work_class(req, res) {
+    const { classroom } = req.params;
+
+    const data = await WorksClassroom.find({ classroom });
+
+    return res.json(data);
+
+  },
+
   async store(req, res) {
     const { classroom_id } = req.params;
     const { filename } = req.file;

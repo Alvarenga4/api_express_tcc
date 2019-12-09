@@ -1,4 +1,6 @@
 const Classroom = require('../Models/Classroom');
+const Subject = require('../Models/Subject');
+const Course = require('../Models/Course');
 const User = require('../Models/User');
 
 module.exports = {
@@ -23,17 +25,22 @@ module.exports = {
     const { description } = req.body;
 
     const user = await User.findById(user_id);
+    const subject = await Subject.findById(subject_id);
+    const course = await Course.findById(course_id);
 
     if (user) {
       if (user.is_teacher == true || user.is_adm == true || user.is_coordinator == true) {
         const data = await Classroom.create({
-          subject: subject_id,
-          course: course_id,
+          subject_id,
+          course_id,
           user: user_id,
           description,
+          subject_title: subject.title,
+          course_title: course.title,
+          user_name: user.fullname,
         });
 
-        await data.populate('user').populate('subject').populate('course').execPopulate();
+        await data.populate('user').populate('subject_id').populate('course_id').execPopulate();
 
         return res.json(data);
       } else {

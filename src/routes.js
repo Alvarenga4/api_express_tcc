@@ -45,11 +45,13 @@ routes.delete('/classroom/:_id', ClassroomController.delete);
 
 routes.get('/joinclassroom', JoinClassroomController.index);
 routes.get('/joinclassroom/:_id', JoinClassroomController.show);
+routes.get('/my_register/:user_id', JoinClassroomController.my_register);
 routes.post('/joinclassroom/:classroom_id', JoinClassroomController.store);
 routes.delete('/joinclassroom/:_id', JoinClassroomController.delete);
 
 routes.get('/upfile', WorksClassroomController.index);
 routes.get('/upfile/:_id', WorksClassroomController.show);
+routes.get('/file_classroom/:classroom', WorksClassroomController.work_class);
 routes.post('/upfile/:classroom_id', upload.single('document'), WorksClassroomController.store);
 routes.delete('/upfile/:_id', WorksClassroomController.delete);
 
