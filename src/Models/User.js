@@ -9,7 +9,7 @@ const UserSchema = new mongoose.Schema({
   birthday: String,
   address: String,
   complement: String,
-  number: String,
+  number: Number,
   neighborhood: String,
   zip_code: String,
   state: String,

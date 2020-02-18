@@ -18,7 +18,7 @@ const WorksClassroomSchema = new mongoose.Schema({
 });
 
 WorksClassroomSchema.virtual('document_url').get(function() {
-  return `http://138.197.4.11:3000/documents/${this.document}`
+  return `http://192.168.0.59:3000/documents/${this.document}`
 });
 
 module.exports = mongoose.model('WorksClassroom', WorksClassroomSchema);
